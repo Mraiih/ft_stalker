@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { token } from './stores.js';
   import List from './components/List.svelte';
-  import { env } from 'process';
+  import * as process from 'process';
 
   const data = {
     grant_type: 'client_credentials',
