@@ -3,6 +3,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import nodePolyfills from 'rollup-plugin-node-polyfills';
+import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -36,6 +38,10 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		nodePolyfills(),
+		replace({
+		  'process.env.NODE_ENV': JSON.stringify('production')
+		}),
 		svelte({
 			// enable run-time checks when not in production
 			dev: !production,
