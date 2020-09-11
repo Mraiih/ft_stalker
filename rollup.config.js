@@ -40,7 +40,10 @@ export default {
 	plugins: [
 		nodePolyfills(),
 		replace({
-		  'process.env.NODE_ENV': JSON.stringify('production')
+		  'process.env.NODE_ENV': JSON.stringify('production'),
+		  CLIENT_ID: JSON.stringify(process.env.CLIENT_ID),
+		  CLIENT_SECRET: JSON.stringify(process.env.CLIENT_SECRET),
+
 		}),
 		svelte({
 			// enable run-time checks when not in production

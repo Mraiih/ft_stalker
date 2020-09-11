@@ -6,11 +6,9 @@
 
   const data = {
     grant_type: 'client_credentials',
-    client_id: process.env.CLIENT_ID,
-    client_secret: process.env.CLIENT_SECRET,
+    client_id: CLIENT_ID,
+    client_secret: CLIENT_SECRET,
   }
-
-  console.log(process.env.CLIENT_ID);
 
   let result = '';
   let login = '';
