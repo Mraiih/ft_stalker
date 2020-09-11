@@ -9,11 +9,11 @@
 
   onMount(async () => {
     let res = '';
-    res = await fetch(`https://api.intra.42.fr/v2/users/${login}?access_token=${$token}`);
+    res = await fetch(`https://cors-anywhere.herokuapp.com/https://api.intra.42.fr/v2/users/${login}?access_token=${$token}`);
 
     if (res.status == 429) {
       await sleep(1000);
-      res = await fetch(`https://api.intra.42.fr/v2/users/${login}?access_token=${$token}`);
+      res = await fetch(`https://cors-anywhere.herokuapp.com/https://api.intra.42.fr/v2/users/${login}?access_token=${$token}`);
     }
 
     result = await res.json();
