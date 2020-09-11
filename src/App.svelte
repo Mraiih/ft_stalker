@@ -6,8 +6,8 @@
 
   const data = {
     grant_type: 'client_credentials',
-    client_id: '38fa2d579506e04ad3d830e7c57841437a7081afd8cbe305dfb3971849f52572',
-    client_secret: '3aab6d9c0f9171e0a4faa23041d49f856bd6c6d0c8c8c6de46a3bfa163282dcc',
+    client_id: process.env.CLIENT_ID,
+    client_secret: process.env.CLIENT_SECRET,
   }
 
   let result = '';
