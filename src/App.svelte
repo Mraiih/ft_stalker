@@ -10,6 +10,8 @@
     client_secret: process.env.CLIENT_SECRET,
   }
 
+  console.log(process.env.CLIENT_ID);
+
   let result = '';
   let login = '';
   let logins = [];
