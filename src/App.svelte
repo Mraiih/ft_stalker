@@ -21,6 +21,8 @@
     const res = await fetch(`https://api.intra.42.fr/oauth/token`, {
       method: 'POST',
       headers: {
+        'Access-Control-Allow-Origin': 'https://api.intra.42.fr',
+        'Vary': 'Origin',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
