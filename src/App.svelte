@@ -6,8 +6,8 @@
 
   const data = {
     grant_type: 'client_credentials',
-    client_id: process.env.CLIENT_ID,
-    client_secret: process.env.CLIENT_SECRET,
+    client_id: '38fa2d579506e04ad3d830e7c57841437a7081afd8cbe305dfb3971849f52572',
+    client_secret: '3aab6d9c0f9171e0a4faa23041d49f856bd6c6d0c8c8c6de46a3bfa163282dcc',
   }
 
   let result = '';
@@ -37,7 +37,7 @@
 
   async function handleEnter(event) {
     if (event.keyCode === 13 && $token != 0) {
-      const res = await fetch(`https://api.intra.42.fr/v2/users/${login}?access_token=${$token}`);
+      const res = await fetch(`https://cors-anywhere.herokuapp.com/https://api.intra.42.fr/v2/users/${login}?access_token=${$token}`);
 
       if (res.status == 200) {
         logins[logins.length] = login;
