@@ -21,6 +21,7 @@
     const res = await fetch(`https://api.intra.42.fr/oauth/token`, {
       method: 'POST',
       headers: {
+        'Access-Control-Request-Method': 'POST',
         'Origin': 'https://ft-stalker.vercel.app',
         'Content-Type': 'application/json'
       },
