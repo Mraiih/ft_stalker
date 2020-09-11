@@ -18,7 +18,7 @@
   }
 
   onMount(async () => {
-    const res = await fetch(`https://api.intra.42.fr/oauth/token`, {
+    const res = await fetch(`https://cors-anywhere.herokuapp.com/https://api.intra.42.fr/oauth/token`, {
       method: 'POST',
       headers: {
         'Access-Control-Request-Method': 'POST',
