@@ -21,8 +21,7 @@
     const res = await fetch(`https://cors-anywhere.herokuapp.com/https://api.intra.42.fr/oauth/token`, {
       method: 'POST',
       headers: {
-        'Access-Control-Request-Method': 'POST',
-        'Origin': 'https://ft-stalker.vercel.app',
+        'Origin': 'https://ft-stalker.mraih.vercel.app',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)

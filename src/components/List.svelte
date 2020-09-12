@@ -13,15 +13,19 @@
       <p>loading</p>
     {/if}
   {:else}
-    <h1>NO PROFILE YET</h1>
+    <h1 class='alone'>NO PROFILE YET</h1>
   {/each}
 </main>
 
 <style>
   main {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     column-gap: 10px;
     row-gap: 20px;
+  }
+
+  .alone {
+    grid-column-start: 3;
   }
 </style>
