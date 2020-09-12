@@ -20,7 +20,7 @@
 <style>
   main {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     column-gap: 10px;
     row-gap: 20px;
   }

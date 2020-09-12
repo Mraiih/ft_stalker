@@ -11,12 +11,13 @@
     let res = '';
     res = await fetch(`https://cors-anywhere.herokuapp.com/https://api.intra.42.fr/v2/users/${login}?access_token=${$token}`);
 
-    if (res.status == 429) {
+    while (res.status == 429) {
       await sleep(1000);
       res = await fetch(`https://cors-anywhere.herokuapp.com/https://api.intra.42.fr/v2/users/${login}?access_token=${$token}`);
     }
 
     result = await res.json();
+    console.log(result);
     parseInformation(result);
   });
 
@@ -79,18 +80,36 @@
     <img src={result.image_url} alt='avatar' />
     <h2>{result.displayname}</h2>
     <p>
+      Piscine: {result.pool_month} {result.pool_year}<br />
       Level: {level}<br />
       Points de corrections: {result.correction_point}<br />
       Location: {result.location}<br />
     </p>
     <h3>Notes</h3>
-    <p>
+    <div>
       {#each notes as note}
-        {note.project.name} : {note.final_mark}<br />
+        <div class='note'>
+          <span class='symboles'>
+            {#if note['validated?'] == true}
+              ✔
+            {:else if note['validated?'] == false}
+              ✘
+            {/if}
+            {#if note.status == 'in_progress'}
+              ☐
+            {/if}
+          </span>
+          <span class='name'>{note.project.name}:</span>
+          <span class='final_mark'>
+            {#if note.final_mark}
+              {note.final_mark}
+            {/if}
+          </span><br />
+        </div>
       {:else}
         loading
       {/each}
-    </p>
+    </div>
   {/if}
 
   <span class='supress' on:click={removeUser}>supprimer</span>
@@ -99,9 +118,9 @@
 <style>
   main {
     position: relative;
-    width: 400px;
+    width: 300px;
     max-height: 1200px;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
     border: 1px solid white;
     border-radius: 5px;
   }
@@ -115,5 +134,24 @@
   img {
     max-height: 100%;
     max-width: 100%;
+  }
+
+  div.note {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  span.symboles {
+    width: 50px;
+    align-self: flex-start;
+  }
+
+  span.name {
+    width: 200px;
+  }
+
+  span.final_mark {
+    width: 50px;
   }
 </style>
