@@ -99,7 +99,7 @@
           </span>
           <span class='name'>{note.project.name}:</span>
           <span class='final_mark'>
-            {#if note.final_mark}
+            {#if note.final_mark != null}
               {note.final_mark}
             {/if}
           </span><br />
