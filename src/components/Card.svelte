@@ -9,12 +9,11 @@
 
   onMount(async () => {
     let res = '';
-    res = await fetch(`https://cors-anywhere.herokuapp.com/https://api.intra.42.fr/v2/users/${login}?access_token=${$token}`);
 
-    while (res.status == 429) {
-      await sleep(1000);
+    do {
       res = await fetch(`https://cors-anywhere.herokuapp.com/https://api.intra.42.fr/v2/users/${login}?access_token=${$token}`);
-    }
+      await sleep(1000);
+    } while (res.status == 429);
 
     result = await res.json();
     parseInformation(result);
@@ -50,7 +49,7 @@
       projets.find(project => project.project.slug == "c-piscine-exam-00"),
       projets.find(project => project.project.slug == "c-piscine-exam-01"),
       projets.find(project => project.project.slug == "c-piscine-exam-02"),
-      projets.find(project => project.project.slug == "c-piscine-exam-03")
+      projets.find(project => project.project.slug == "c-piscine-final-exam")
     ];
 
     notes = notes.filter(note => note != undefined);
