@@ -78,6 +78,7 @@
     <img src={result.image_url} alt='avatar' />
     <h2>{result.displayname}</h2>
     <p>
+      Login: {result.login}<br />
       Piscine: {result.pool_month} {result.pool_year}<br />
       Level: {level}<br />
       Points de corrections: {result.correction_point}<br />
@@ -97,7 +98,11 @@
               ☐
             {/if}
           </span>
-          <span class='name'>{note.project.name}:</span>
+          <span class='name'>{note.project.name}
+            {#if note.occurrence > 0}
+              ({note.occurrence + 1})
+            {/if}
+            :</span>
           <span class='final_mark'>
             {#if note.final_mark != null}
               {note.final_mark}
